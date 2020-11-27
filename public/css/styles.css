@@ -194,3 +194,14 @@ img .role_icons {
 .form-check-input{
     position: relative;
 }
+
+.add-section-links
+{
+    text-decoration: none !important;
+    color: black;
+    font-size: 1.5rem;
+}
+
+.adminpanel-table-cells{
+    text-align:center
+}

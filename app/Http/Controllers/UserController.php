@@ -165,10 +165,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function user_course_create()
+    public function user_course_create($user_id = null)
     {
         $sections = Section::all();
-        return view('users.courses.create',compact('sections'));
+        return view('users.courses.create',compact('sections','user_id'));
     }
 
     public function user_course_store(Request $request)

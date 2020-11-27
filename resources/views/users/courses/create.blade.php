@@ -23,9 +23,11 @@
                             </ul>
                     </div>
                     <p id="courseResult"></p>
-
+                    @if($user_id != null)
+                        <input type="hidden" name="user_id" id="user_id" value="{{ $user_id }}">
+                    @endif
                     <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -67,6 +69,7 @@
             
             $("#register_form").submit(function(e){
                 e.preventDefault();
+                $('#submit').prop('disabled', true);
                 if($('.form-check-input:checked').length == 0)
                 {
                     alert("nothing is checked");
@@ -91,11 +94,14 @@
                     
                         success: function( data ) {
                             swal("Success", "You have added the courses successfully!", "success")
+                            $('#submit').prop('disabled', false);
                         },
 
                         error: function (err) {
                             if (err.status == 422) {
-                               swal("Error","There is a problem while submiting the form.",'error');
+                                swal("Error","There is a problem while submiting the form.",'error');
+                                $('#submit').prop('disabled', false);
+
                             }
                         }
                            

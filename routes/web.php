@@ -42,6 +42,9 @@ Route::middleware('roleVerification')->group(function () {
     Route::post('user/course/store','UserController@user_course_store')->name('user.course.store');
     Route::get('user/course/create','UserController@user_course_create')
     ->name('user.course.create');
+    Route::get('user/course/create/{user_id}','UserController@user_course_create')
+    ->name('other.user.course.create');
+
     Route::get('adminPanel/permissions', 'HomeController@adminPanelPermissions')
         ->name('permissions');
 

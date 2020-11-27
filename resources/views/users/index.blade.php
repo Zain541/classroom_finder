@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/index">Home</a></li>
@@ -13,7 +14,7 @@
     </ol>
 </nav>
 <div class="container">
-    <div class="bodyContent row justify-content-center">
+    <div class="bodyContent row justify-content-center" style="min-width: 100% !important;">
         <div class="col-md-12">
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
@@ -42,6 +43,7 @@
                     <th scope="col">Role</th>
                     <th scope="col">Section</th>
                     <th scope="col">Attendance</th>
+                    <th scope="col">+Section</th>
                 </tr>
                 </thead>
 
@@ -65,7 +67,10 @@
                                 </span></td>
                             @endif
                             <td>{{ $user->section_id }}</td>
-                            <td style="text-align:center"><a href="{{ route('attendance.show',$user->id)}}"><i class="fa fa-eye" style="font-size:13px"></i></a></td>
+                            <td class="adminpanel-table-cells"><a href="{{ route('attendance.show',$user->id)}}"><i class="fa fa-eye" style="font-size:13px"></i></a></td>
+                            <td class="adminpanel-table-cells"> 
+                                <a href="{{ route('other.user.course.create',$user->id)}}" class="add-section-links">+</a>
+                            </td>
                             <td>
                                 <a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a>
                             </td>
